@@ -1,23 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import Main from './components/Main';
+import { Web3Loader, Web3Injector } from './containers/Web3';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Web3Loader>
+        {/* You can use the Web3Injector component anywhere down the component tree to pull in the web3 instance */}
+        <Web3Injector>
+          {web3 => {
+            // Only load the Main component when web3 is ready
+            return web3 ? <Main web3={web3} /> : null;
+          }}
+        </Web3Injector>
+      </Web3Loader>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
