@@ -203,6 +203,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 11,
     textAlign: 'center',
+    backgroundColor: 'white',
+    color: 'black',
   },
   inputSubmitting: {
     borderColor: 'rgba(34, 36, 38, 0.15)',
